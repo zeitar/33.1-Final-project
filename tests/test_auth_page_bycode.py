@@ -1,10 +1,10 @@
 import pytest
-import time
 from pages.auth_page_bycode import AuthPage
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 
 @pytest.fixture(autouse=True)
 def driver():
@@ -13,6 +13,7 @@ def driver():
     yield driver
 
     driver.quit()
+
 
 def test_invalid_login(web_browser):
 
@@ -35,7 +36,8 @@ def test_valid_login(web_browser):
 
     page.login.send_keys('123@gmail.com')
 
-    time.sleep(10)
+    WebDriverWait(web_browser, 120).until(
+        EC.invisibility_of_element_located((By.CLASS_NAME, 'otp-form__timeout')))
 
     page.getcode.click()
 
@@ -91,6 +93,7 @@ def test_ya_login(web_browser):
 
     page = AuthPage(web_browser)
 
+    page.ya.click()
     page.ya.click()
     page.ya.wait_until_not_visible()
 

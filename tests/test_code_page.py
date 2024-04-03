@@ -5,7 +5,6 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-#\\\\\\\\\УМНЫЙ ДОМ/////////
 
 @pytest.fixture(autouse=True)
 def driver():
@@ -14,6 +13,10 @@ def driver():
     yield driver
 
     driver.quit()
+
+
+#\\\\\\\\\УМНЫЙ ДОМ/////////
+
 
 def test_invalid_login(web_browser):
 
@@ -36,6 +39,10 @@ def test_valid_login(web_browser):
 
     page.address.send_keys('1111111111')
 
+    WebDriverWait(web_browser, 120).until(
+        EC.invisibility_of_element_located((By.CLASS_NAME, 'otp-form__timeout')))
+
+    page.getcode.click()
     page.getcode.click()
 
     assert WebDriverWait(web_browser, 60).until(

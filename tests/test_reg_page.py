@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 @pytest.fixture(autouse=True)
 def driver():
     driver = webdriver.Chrome()
@@ -12,6 +13,7 @@ def driver():
     yield driver
 
     driver.quit()
+
 
 def test_invalid_name1(web_browser):
 

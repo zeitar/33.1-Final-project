@@ -17,6 +17,7 @@ def chrome_options(chrome_options):
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--log-level=DEBUG')
 
+
     return chrome_options
 
 

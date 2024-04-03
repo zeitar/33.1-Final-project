@@ -20,4 +20,4 @@ python -m pytest -v --driver Chrome --driver-path chromedriver-win64/chromedrive
 -Ростелеком Авторизация по коду:
 python -m pytest -v --driver Chrome --driver-path chromedriver-win64/chromedriver.exe -k test_code_page
 
-Тест кейсы приложены отдельной таблицей
+Тест кейсы и дефекты приложены отдельной таблицей
